@@ -384,7 +384,7 @@ const DashboardLayout = () => {
           <div className="flex items-center p-5 about gap-x-4">
             <div className="w-10 h-10 rounded-full">
               <img
-                src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                src="./technophile.png"
                 alt=""
                 className="object-cover w-full h-full rounded-full"
               />

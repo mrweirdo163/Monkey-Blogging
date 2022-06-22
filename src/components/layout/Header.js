@@ -87,6 +87,29 @@ const menuLinks = [
   },
 ];
 
+const logInLinks = [
+  {
+    url: "/sign-in",
+    title: "Log in",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+        />
+      </svg>
+    ),
+  },
+];
+
 const HeaderStyles = styled.header`
   padding: 20px 0;
 
@@ -288,22 +311,29 @@ const Header = () => {
                 </div>
               </div>
               <div className="mt-5">
-                {menuLinks.map((item) => (
-                  <li
-                    className="flex items-center justify-between link"
-                    key={item.title}
-                  >
-                    <div className="flex items-center gap-x-4">
-                      <span>{item.icon}</span>
-                      <NavLink to={item.url} className="menu-link">
-                        {item.title}
-                      </NavLink>
-                    </div>
-                    <span>
-                      <i class="bx bx-chevron-down"></i>
-                    </span>
-                  </li>
-                ))}
+                {userInfo &&
+                  menuLinks.map((item) => (
+                    <li
+                      className="flex items-center justify-between link"
+                      key={item.title}
+                    >
+                      <div className="flex items-center gap-x-4">
+                        <span>{item.icon}</span>
+                        <NavLink to={item.url} className="menu-link">
+                          {item.title}
+                        </NavLink>
+                      </div>
+                      <span>
+                        <i class="bx bx-chevron-down"></i>
+                      </span>
+                    </li>
+                  ))}
+                {!userInfo && (
+                  <>
+                    <MenuLinks></MenuLinks>
+                    <LogInItem></LogInItem>
+                  </>
+                )}
               </div>
             </div>
             <div className="flex items-center p-5 about gap-x-4">
@@ -387,3 +417,35 @@ const Header = () => {
 };
 
 export default Header;
+
+const LogInItem = () => {
+  return logInLinks.map((item) => (
+    <li className="flex items-center justify-between link" key={item.title}>
+      <div className="flex items-center gap-x-4">
+        <span>{item.icon}</span>
+        <NavLink to={item.url} className="menu-link">
+          {item.title}
+        </NavLink>
+      </div>
+      <span>
+        <i class="bx bx-chevron-down"></i>
+      </span>
+    </li>
+  ));
+};
+
+const MenuLinks = () => {
+  return menuLinks.slice(0, 3).map((item) => (
+    <li className="flex items-center justify-between link" key={item.title}>
+      <div className="flex items-center gap-x-4">
+        <span>{item.icon}</span>
+        <NavLink to={item.url} className="menu-link">
+          {item.title}
+        </NavLink>
+      </div>
+      <span>
+        <i class="bx bx-chevron-down"></i>
+      </span>
+    </li>
+  ));
+};

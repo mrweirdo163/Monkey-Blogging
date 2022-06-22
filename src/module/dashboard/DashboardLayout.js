@@ -270,6 +270,7 @@ const MenuStyles = styled.button`
     display: inline-block;
   }
 `;
+
 const DashboardLayout = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
